@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // Check code as modern browser JavaScript.
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    // Include browser APIs such as File, document, image loading, and events.
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    // Catch common mistakes around missing values and wrong value types.
+    "strict": true,
+    // TypeScript checks code; Vite creates the browser-ready files.
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    // Let React components use JSX, the HTML-like syntax inside TypeScript.
+    "jsx": "react-jsx"
+  },
+  // Our actual app code will live in the src folder.
+  "include": ["src"],
+  "references": []
+}
