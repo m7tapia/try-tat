@@ -33,39 +33,41 @@ export function ControlPanel({
 }: ControlPanelProps) {
   return (
     <aside className="control-panel">
-      <div className="panel-heading">
-        <h2>Upload your images</h2>
+      <div className="upload-section">
+        <div className="panel-heading">
+          <h2>Upload your images</h2>
+        </div>
+
+        <UploadField
+          number="1"
+          label="Placement photo"
+          hint="JPG, PNG or HEIC"
+          accept="image/jpeg,image/png,image/heic,image/heif,.jpg,.jpeg,.png,.heic,.heif"
+          id="photo-upload"
+          inputRef={photoInputRef}
+          filename={photo?.file.name}
+          onChange={(event) => onChooseAsset(event, "photo")}
+        />
+
+        <UploadField
+          number="2"
+          label="Tattoo artwork"
+          hint="Transparent PNG"
+          accept="image/png,.png"
+          id="tattoo-upload"
+          inputRef={tattooInputRef}
+          filename={tattoo?.file.name}
+          onChange={(event) => onChooseAsset(event, "tattoo")}
+        />
+
+        <p className="upload-tip">
+          Need a transparent tattoo file? Try an online transparent PNG converter.
+        </p>
+
+        {error && (
+          <p className="error" role="alert">{error}</p>
+        )}
       </div>
-
-      <UploadField
-        number="1"
-        label="Placement photo"
-        hint="JPG, PNG or HEIC"
-        accept="image/jpeg,image/png,image/heic,image/heif,.jpg,.jpeg,.png,.heic,.heif"
-        id="photo-upload"
-        inputRef={photoInputRef}
-        filename={photo?.file.name}
-        onChange={(event) => onChooseAsset(event, "photo")}
-      />
-
-      <UploadField
-        number="2"
-        label="Tattoo artwork"
-        hint="Transparent PNG"
-        accept="image/png,.png"
-        id="tattoo-upload"
-        inputRef={tattooInputRef}
-        filename={tattoo?.file.name}
-        onChange={(event) => onChooseAsset(event, "tattoo")}
-      />
-
-      <p className="upload-tip">
-        Need a transparent tattoo file? Try an online transparent PNG converter.
-      </p>
-
-      {error && (
-        <p className="error" role="alert">{error}</p>
-      )}
 
       <fieldset disabled={!ready} className="adjustments">
         <legend><span>3</span> Fine-tune placement</legend>

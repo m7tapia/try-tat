@@ -534,7 +534,35 @@ footer {
   }
 
   .control-panel {
+    display: flex;
+    flex-direction: column;
     padding: 28px;
+  }
+
+  .adjustments {
+    order: 1;
+    padding-top: 0;
+  }
+
+  .upload-section {
+    order: 2;
+  }
+
+  .upload-section .panel-heading {
+    margin-top: 22px;
+  }
+
+  .upload-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .step-number,
+  .adjustments legend span {
+    display: none;
+  }
+
+  .actions {
+    order: 3;
   }
 
   footer {
@@ -614,7 +642,7 @@ footer {
   }
 
   .upload-row {
-    grid-template-columns: 25px minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
     padding: 18px 0;
   }
@@ -625,7 +653,7 @@ footer {
   }
 
   .upload-tip {
-    margin-left: 37px;
+    margin-left: 0;
   }
 
   .range-row {
