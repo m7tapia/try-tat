@@ -68,14 +68,20 @@ export function ControlPanel({
           <p className="error" role="alert">{error}</p>
         )}
 
-        <button
-          className="reset upload-reset"
-          type="button"
-          onClick={onStartOver}
-          disabled={!photo && !tattoo}
-        >
-          Remove files
-        </button>
+        <div className="upload-actions">
+          <button
+            className="reset"
+            type="button"
+            onClick={onStartOver}
+            disabled={!photo && !tattoo}
+          >
+            Reset files
+          </button>
+          <p>
+            <strong>Ready to keep it?</strong>
+            Screenshot to save.
+          </p>
+        </div>
       </div>
 
       <fieldset disabled={!ready} className="adjustments">
@@ -106,12 +112,6 @@ export function ControlPanel({
         />
       </fieldset>
 
-      <div className="actions">
-        <p>
-          <strong>Ready to keep it?</strong>
-          Screenshot to save.
-        </p>
-      </div>
     </aside>
   );
 }
