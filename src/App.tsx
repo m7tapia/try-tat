@@ -2,7 +2,7 @@ import { ControlPanel } from "./components/ControlPanel";
 import { EditorCanvas } from "./components/EditorCanvas";
 import { PageLayout } from "./components/PageLayout";
 import { useEditor } from "./hooks/useEditor";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react";
 
 
 export function App() {
