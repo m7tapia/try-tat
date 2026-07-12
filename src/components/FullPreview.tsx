@@ -33,7 +33,7 @@ export function FullPreview({
   const aspectRatio = photo.width / photo.height;
   const compositionStyle: CSSProperties = {
     aspectRatio: `${photo.width} / ${photo.height}`,
-    width: `min(calc(100vw - 96px), calc((100vh - 150px) * ${aspectRatio}))`,
+    width: `min(calc(100vw - var(--preview-gutter)), calc((100vh - var(--preview-vertical-space)) * ${aspectRatio}))`,
   };
 
   return (
