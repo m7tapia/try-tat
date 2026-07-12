@@ -14,7 +14,7 @@ export async function validateImageFile(file: File, role: ImageRole, image: HTML
   }
 
   if (role === "tattoo" && !(await hasTransparency(image))) {
-    throw new Error("Tattoo artwork needs a transparent background.");
+    throw new Error("Tattoo artwork needs to be a transparent PNG.");
   }
 }
 
