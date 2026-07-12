@@ -86,7 +86,7 @@ export function ControlPanel({
           onChange={(rotation) => onTransformChange({ rotation })}
         />
         <RangeControl
-          label="Transparency"
+          label="Opacity"
           value={transform.opacity}
           min={10}
           max={100}
