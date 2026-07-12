@@ -112,7 +112,6 @@ function EmptyCanvas() {
     <div className="empty-state">
       <span className="empty-mark" aria-hidden="true">✦</span>
       <h2>Your canvas is waiting</h2>
-      <p>Choose a JPG, PNG, or HEIC photo from the panel to begin.</p>
     </div>
   );
 }
