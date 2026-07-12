@@ -63,7 +63,7 @@ export function ControlPanel({
         />
 
         <p className="upload-tip">
-          Need a transparent tattoo file? Try an online transparent PNG converter.
+          Need a transparent tattoo file? Try an online transparent PNG converter. We recommend remove.bg.
           <br />
           If it couldn't isolate the tattoo design, try asking AI to
           isolate the tattoo design with a blank white background first.
