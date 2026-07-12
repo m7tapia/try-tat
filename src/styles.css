@@ -122,7 +122,7 @@ input {
   border: 1px solid #91887d;
   background: #2a2723;
   user-select: none;
-  touch-action: none;
+  touch-action: pan-y pinch-zoom;
 }
 
 .workspace.has-photo {
@@ -170,6 +170,7 @@ input {
   cursor: grab;
   filter: contrast(1.05);
   transform-origin: center;
+  touch-action: none;
 }
 
 .tattoo.is-dragging {
@@ -211,6 +212,8 @@ input {
   padding: 24px 48px 18px;
   color: #f8f3e9;
   background: rgba(20, 18, 16, 0.96);
+  overscroll-behavior: contain;
+  touch-action: none;
 }
 
 .full-preview-header {
@@ -707,14 +710,14 @@ footer {
   }
 
   .full-preview {
-    --preview-gutter: 24px;
-    --preview-vertical-space: 126px;
-    padding: 14px 12px 12px;
+    --preview-gutter: 12px;
+    --preview-vertical-space: 104px;
+    padding: 10px 10px 8px;
   }
 
   .full-preview-header {
     gap: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
   }
 
   .full-preview-header strong {
@@ -730,6 +733,11 @@ footer {
     margin-top: 10px;
     font-size: 9px;
     line-height: 1.4;
+  }
+
+  .full-preview-composition {
+    max-width: calc(100dvw - var(--preview-gutter));
+    max-height: calc(100dvh - var(--preview-vertical-space));
   }
 
   .developer-tools {

@@ -9,8 +9,6 @@ type UploadFieldProps = {
   filename?: string;
   inputRef: React.RefObject<HTMLInputElement | null>;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onRemove?: () => void;
-  resetLabel?: string;
 };
 
 export function UploadField({
@@ -22,8 +20,6 @@ export function UploadField({
   filename,
   inputRef,
   onChange,
-  onRemove,
-  resetLabel,
 }: UploadFieldProps) {
   return (
     <div className="upload-row">
@@ -36,11 +32,6 @@ export function UploadField({
         <label className="file-button" htmlFor={id}>
           Choose file
         </label>
-        {filename && onRemove && resetLabel && (
-          <button className="file-remove" type="button" onClick={onRemove}>
-            {resetLabel}
-          </button>
-        )}
       </div>
       <input
         ref={inputRef}

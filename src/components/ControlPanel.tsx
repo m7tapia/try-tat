@@ -15,7 +15,6 @@ type ControlPanelProps = {
     event: React.ChangeEvent<HTMLInputElement>,
     role: ImageRole,
   ) => void;
-  onRemoveAsset: (role: ImageRole) => void;
   onTransformChange: (update: Partial<TattooTransform>) => void;
 };
 
@@ -28,7 +27,6 @@ export function ControlPanel({
   photoInputRef,
   tattooInputRef,
   onChooseAsset,
-  onRemoveAsset,
   onTransformChange,
 }: ControlPanelProps) {
   return (
@@ -58,8 +56,6 @@ export function ControlPanel({
           inputRef={tattooInputRef}
           filename={tattoo?.file.name}
           onChange={(event) => onChooseAsset(event, "tattoo")}
-          onRemove={() => onRemoveAsset("tattoo")}
-          resetLabel="Reset tattoo"
         />
 
         <p className="upload-tip">

@@ -34,7 +34,6 @@ export function App() {
           photoInputRef={editor.photoInputRef}
           tattooInputRef={editor.tattooInputRef}
           onChooseAsset={(event, role) => void editor.chooseAsset(event, role)}
-          onRemoveAsset={editor.removeAsset}
           onTransformChange={editor.updateTransform}
         />
       </section>
