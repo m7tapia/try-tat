@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/create-sites-worker.mjs",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "check": "tsc --noEmit"
   },

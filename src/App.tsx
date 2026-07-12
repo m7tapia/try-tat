@@ -2,7 +2,7 @@ import { ControlPanel } from "./components/ControlPanel";
 import { EditorCanvas } from "./components/EditorCanvas";
 import { PageLayout } from "./components/PageLayout";
 import { useEditor } from "./hooks/useEditor";
-import { DeveloperTools } from "./testing/DeveloperTools";
+
 
 export function App() {
   const editor = useEditor();
@@ -38,7 +38,7 @@ export function App() {
         />
       </section>
 
-      <DeveloperTools onLoadAsset={editor.applyAsset} />
+
     </PageLayout>
   );
 }
