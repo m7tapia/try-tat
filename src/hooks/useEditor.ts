@@ -84,15 +84,19 @@ export function useEditor() {
     updatePosition(event.clientX, event.clientY);
   }
 
-  function startOver() {
-    revokeAsset(photo);
-    revokeAsset(tattoo);
-    setPhoto(null);
-    setTattoo(null);
-    setTransform(DEFAULT_TRANSFORM);
+  function removeAsset(role: ImageRole) {
     setError(null);
 
-    if (photoInputRef.current) photoInputRef.current.value = "";
+    if (role === "photo") {
+      revokeAsset(photo);
+      setPhoto(null);
+      if (photoInputRef.current) photoInputRef.current.value = "";
+      return;
+    }
+
+    revokeAsset(tattoo);
+    setTattoo(null);
+    setTransform(DEFAULT_TRANSFORM);
     if (tattooInputRef.current) tattooInputRef.current.value = "";
   }
 
@@ -114,7 +118,7 @@ export function useEditor() {
     updatePosition,
     startDragging,
     stopDragging: () => setDragging(false),
-    startOver,
+    removeAsset,
   };
 }
 

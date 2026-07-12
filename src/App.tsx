@@ -10,7 +10,6 @@ export function App() {
 
   return (
     <PageLayout>
-      <Analytics />
       <section className="editor" aria-label="Tattoo preview editor">
         <EditorCanvas
           photo={editor.photo}
@@ -35,12 +34,12 @@ export function App() {
           photoInputRef={editor.photoInputRef}
           tattooInputRef={editor.tattooInputRef}
           onChooseAsset={(event, role) => void editor.chooseAsset(event, role)}
+          onRemoveAsset={editor.removeAsset}
           onTransformChange={editor.updateTransform}
-          onStartOver={editor.startOver}
         />
       </section>
 
-
+    <Analytics />
     </PageLayout>
   );
 }

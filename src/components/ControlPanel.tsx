@@ -15,8 +15,8 @@ type ControlPanelProps = {
     event: React.ChangeEvent<HTMLInputElement>,
     role: ImageRole,
   ) => void;
+  onRemoveAsset: (role: ImageRole) => void;
   onTransformChange: (update: Partial<TattooTransform>) => void;
-  onStartOver: () => void;
 };
 
 export function ControlPanel({
@@ -28,8 +28,8 @@ export function ControlPanel({
   photoInputRef,
   tattooInputRef,
   onChooseAsset,
+  onRemoveAsset,
   onTransformChange,
-  onStartOver,
 }: ControlPanelProps) {
   return (
     <aside className="control-panel">
@@ -58,6 +58,8 @@ export function ControlPanel({
           inputRef={tattooInputRef}
           filename={tattoo?.file.name}
           onChange={(event) => onChooseAsset(event, "tattoo")}
+          onRemove={() => onRemoveAsset("tattoo")}
+          resetLabel="Reset tattoo"
         />
 
         <p className="upload-tip">
@@ -68,19 +70,11 @@ export function ControlPanel({
           <p className="error" role="alert">{error}</p>
         )}
 
-        <div className="upload-actions">
+        <div className="save-note">
           <p>
             <strong>Ready to keep it?</strong>
             Screenshot to save.
           </p>
-          <button
-            className="reset"
-            type="button"
-            onClick={onStartOver}
-            disabled={!photo && !tattoo}
-          >
-            Reset files
-          </button>
         </div>
       </div>
 
