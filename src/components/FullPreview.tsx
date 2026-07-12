@@ -84,7 +84,11 @@ export function FullPreview({
             onClick={() => void handleDownload()}
             disabled={downloadState === "saving"}
           >
-            {downloadState === "saving" ? "Preparing…" : "Download JPEG"}
+            {downloadState === "saving"
+              ? "Preparing…"
+              : downloadState === "error"
+                ? "Try again"
+                : "Download JPEG"}
           </button>
           <button type="button" onClick={onClose} autoFocus>
             Close
@@ -117,11 +121,6 @@ export function FullPreview({
         )}
       </div>
 
-      <p className="full-preview-hint" aria-live="polite">
-        {downloadState === "error"
-          ? "The download could not be created. Try again."
-          : "Your JPEG includes the photo and tattoo only."}
-      </p>
     </div>
   );
 }

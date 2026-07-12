@@ -202,12 +202,12 @@ input {
 
 .full-preview {
   --preview-gutter: 96px;
-  --preview-vertical-space: 150px;
+  --preview-vertical-space: 126px;
   position: fixed;
   z-index: 100;
   inset: 0;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
   place-items: center;
   padding: 24px 48px 18px;
   color: #f8f3e9;
@@ -238,8 +238,7 @@ input {
   font: 600 22px "Playfair Display", serif;
 }
 
-.full-preview-header span,
-.full-preview-hint {
+.full-preview-header span {
   color: #bcb4aa;
   font-size: 10px;
   letter-spacing: 0.12em;
@@ -290,11 +289,6 @@ input {
   object-fit: contain;
   transform-origin: center;
   pointer-events: none;
-}
-
-.full-preview-hint {
-  margin: 14px 0 0;
-  text-align: center;
 }
 
 .control-panel {
@@ -727,7 +721,7 @@ footer {
 
   .full-preview {
     --preview-gutter: 12px;
-    --preview-vertical-space: 104px;
+    --preview-vertical-space: 88px;
     padding: 10px 10px 8px;
   }
 
@@ -747,12 +741,6 @@ footer {
   .full-preview-header button {
     min-height: 42px;
     padding: 10px 11px;
-  }
-
-  .full-preview-hint {
-    margin-top: 10px;
-    font-size: 9px;
-    line-height: 1.4;
   }
 
   .full-preview-composition {
