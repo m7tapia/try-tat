@@ -65,7 +65,7 @@ export function ControlPanel({
         <p className="upload-tip">
           Need a transparent tattoo file? Try an online transparent PNG converter.
           <br />
-          Converters work best with a clear white background. Try asking AI to
+          Converters work best with a blank white background. Try asking AI to
           isolate the tattoo design.
         </p>
 
