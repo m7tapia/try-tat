@@ -2,6 +2,7 @@ import { ControlPanel } from "./components/ControlPanel";
 import { EditorCanvas } from "./components/EditorCanvas";
 import { PageLayout } from "./components/PageLayout";
 import { useEditor } from "./hooks/useEditor";
+import { Analytics } from "@vercel/analytics/next"
 
 
 export function App() {
@@ -9,6 +10,7 @@ export function App() {
 
   return (
     <PageLayout>
+      <Analytics />
       <section className="editor" aria-label="Tattoo preview editor">
         <EditorCanvas
           photo={editor.photo}
