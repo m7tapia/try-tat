@@ -25,14 +25,12 @@ export function FullPreview({
     const previousPosition = document.body.style.position;
     const previousWidth = document.body.style.width;
     const previousHeight = document.body.style.height;
-    const previousTouchAction = document.body.style.touchAction;
 
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     document.body.style.position = "fixed";
     document.body.style.width = "100%";
     document.body.style.height = "100%";
-    document.body.style.touchAction = "none";
     window.addEventListener("keydown", closeOnEscape);
 
     return () => {
@@ -41,7 +39,6 @@ export function FullPreview({
       document.body.style.position = previousPosition;
       document.body.style.width = previousWidth;
       document.body.style.height = previousHeight;
-      document.body.style.touchAction = previousTouchAction;
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [onClose]);

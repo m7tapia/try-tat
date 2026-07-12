@@ -213,7 +213,7 @@ input {
   color: #f8f3e9;
   background: rgba(20, 18, 16, 0.96);
   overscroll-behavior: contain;
-  touch-action: none;
+  touch-action: pan-x pan-y pinch-zoom;
 }
 
 .full-preview-header {
