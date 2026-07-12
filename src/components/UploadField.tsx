@@ -4,6 +4,7 @@ type UploadFieldProps = {
   number: string;
   label: string;
   hint: string;
+  accept: string;
   id: string;
   filename?: string;
   inputRef: React.RefObject<HTMLInputElement | null>;
@@ -14,6 +15,7 @@ export function UploadField({
   number,
   label,
   hint,
+  accept,
   id,
   filename,
   inputRef,
@@ -33,7 +35,7 @@ export function UploadField({
         ref={inputRef}
         id={id}
         type="file"
-        accept="image/png,.png"
+        accept={accept}
         onChange={onChange}
       />
     </div>

@@ -19,6 +19,12 @@ export function DeveloperTools({ onLoadAsset }: DeveloperToolsProps) {
       </button>
       <button
         type="button"
+        onClick={() => void onLoadAsset(makeFixture("jpg"), "photo")}
+      >
+        Load test JPG
+      </button>
+      <button
+        type="button"
         onClick={() => void onLoadAsset(makeFixture("tattoo"), "tattoo")}
       >
         Load test tattoo
@@ -33,7 +39,7 @@ export function DeveloperTools({ onLoadAsset }: DeveloperToolsProps) {
   );
 }
 
-function makeFixture(kind: "photo" | "tattoo" | "opaque") {
+function makeFixture(kind: "photo" | "jpg" | "tattoo" | "opaque") {
   const canvas = document.createElement("canvas");
   canvas.width = 320;
   canvas.height = 240;
@@ -42,7 +48,7 @@ function makeFixture(kind: "photo" | "tattoo" | "opaque") {
   if (!context) throw new Error("Could not create a test image.");
 
   if (kind !== "tattoo") {
-    context.fillStyle = kind === "photo" ? "#b8866b" : "#fff";
+    context.fillStyle = kind === "photo" || kind === "jpg" ? "#b8866b" : "#fff";
     context.fillRect(0, 0, canvas.width, canvas.height);
   }
 
@@ -53,9 +59,11 @@ function makeFixture(kind: "photo" | "tattoo" | "opaque") {
   context.arc(160, 120, 70, 0.4, 5.3);
   context.stroke();
 
-  const encodedImage = canvas.toDataURL("image/png").split(",")[1];
+  const mimeType = kind === "jpg" ? "image/jpeg" : "image/png";
+  const extension = kind === "jpg" ? "jpg" : "png";
+  const encodedImage = canvas.toDataURL(mimeType, 0.9).split(",")[1];
   const binary = atob(encodedImage);
   const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
 
-  return new File([bytes], `${kind}.png`, { type: "image/png" });
+  return new File([bytes], `${kind}.${extension}`, { type: mimeType });
 }

@@ -8,25 +8,23 @@ export function PageLayout({ children }: PropsWithChildren) {
           Try<span>Tat</span>
         </a>
         <p>
-          Private by design <i aria-hidden="true" />
-          Images never leave your browser
+          Quick and easy <i aria-hidden="true" />
+          No sign-up
         </p>
       </header>
 
       <section className="intro" id="top">
-        <p className="eyebrow">A quick placement study</p>
-        <h1>See the idea <em>before</em> the ink.</h1>
+        <h1>Tattoos are <em>forever.</em> Try it first.</h1>
         <p>
           Layer a transparent tattoo design over your own photo. Adjust it until
-          the placement feels right, then take a screenshot.
+          the placement feels right, then screenshot to save.
         </p>
       </section>
 
       {children}
 
       <footer>
-        <span>TryTat / Placement study</span>
-        <span>No uploads. No accounts. No trace.</span>
+        <span>TryTat™</span>
       </footer>
     </main>
   );

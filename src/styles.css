@@ -116,7 +116,7 @@ input {
   position: relative;
   display: grid;
   place-items: center;
-  height: 560px;
+  height: 600px;
   overflow: hidden;
   border: 1px solid #91887d;
   background: #2a2723;
@@ -126,6 +126,33 @@ input {
 
 .workspace.has-photo {
   background: #171513;
+}
+
+.photo-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.full-preview-button {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  color: #fff;
+  background: rgba(20, 18, 16, 0.78);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: zoom-in;
 }
 
 .photo {
@@ -138,7 +165,6 @@ input {
 
 .tattoo {
   position: absolute;
-  max-height: 90%;
   object-fit: contain;
   cursor: grab;
   filter: contrast(1.05);
@@ -172,13 +198,81 @@ input {
   font-size: 13px;
 }
 
-.canvas-note {
-  margin: 14px 0 0;
-  color: #5e574e;
-  font-size: 11px;
+.full-preview {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  place-items: center;
+  padding: 24px 48px 18px;
+  color: #f8f3e9;
+  background: rgba(20, 18, 16, 0.96);
+}
+
+.full-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 18px;
+}
+
+.full-preview-header div {
+  display: grid;
+  gap: 3px;
+}
+
+.full-preview-header strong {
+  font: 600 22px "Playfair Display", serif;
+}
+
+.full-preview-header span,
+.full-preview-hint {
+  color: #bcb4aa;
+  font-size: 10px;
   letter-spacing: 0.12em;
-  text-align: center;
   text-transform: uppercase;
+}
+
+.full-preview-header button {
+  padding: 10px 18px;
+  border: 1px solid #837a70;
+  color: #f8f3e9;
+  background: transparent;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.full-preview-composition {
+  position: relative;
+  max-width: calc(100vw - 96px);
+  max-height: calc(100vh - 150px);
+  overflow: hidden;
+  background: #0e0d0c;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+}
+
+.full-preview-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.full-preview-tattoo {
+  position: absolute;
+  max-height: none;
+  object-fit: contain;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.full-preview-hint {
+  margin: 14px 0 0;
+  text-align: center;
 }
 
 .control-panel {
@@ -187,33 +281,22 @@ input {
 
 .panel-heading {
   display: flex;
+  align-items: center;
   gap: 15px;
   padding-bottom: 25px;
   border-bottom: 1px solid #d4cbbe;
 }
 
-.panel-heading > span {
-  display: grid;
-  place-items: center;
-  width: 31px;
-  height: 31px;
-  border: 1px solid #a1392f;
-  border-radius: 50%;
-  color: #a1392f;
-  font-size: 11px;
-}
-
-.panel-heading p {
-  margin: 0 0 3px;
-  color: #887e71;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .panel-heading h2 {
   margin: 0;
   font: 600 24px "Playfair Display", serif;
+}
+
+.upload-tip {
+  margin: 10px 0 0 43px;
+  color: #766e63;
+  font-size: 10px;
+  line-height: 1.5;
 }
 
 .upload-row {
@@ -410,7 +493,7 @@ footer {
   }
 
   .workspace {
-    height: 470px;
+    height: 510px;
   }
 }
 
@@ -421,7 +504,7 @@ footer {
   }
 
   .workspace {
-    height: 620px;
+    height: 660px;
   }
 }
 

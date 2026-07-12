@@ -15,7 +15,7 @@ export function useEditor() {
   const photoRef = useRef<HTMLImageElement>(null);
   const photoInputRef = useRef<HTMLInputElement>(null);
   const tattooInputRef = useRef<HTMLInputElement>(null);
-  const photoRect = usePhotoRect(photo, workspaceRef, photoRef);
+  const photoRect = usePhotoRect(photo, workspaceRef);
 
   useEffect(() => () => revokeAsset(photo), [photo]);
   useEffect(() => () => revokeAsset(tattoo), [tattoo]);

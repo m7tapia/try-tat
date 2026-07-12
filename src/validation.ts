@@ -1,25 +1,47 @@
 import type { ImageRole } from "./types";
 
-const MAX_PIXELS =30_000_000;
-
 export async function validateImageFile(file: File, role: ImageRole, image: HTMLImageElement): Promise<void> {
-  if (file.type !== "image/png") {
-    const subject = role === "photo" ? "Photos" : "Tattoo artwork";
-    throw new Error(`${subject} must be a PNG file.`);
+  if (role === "photo" && !isSupportedPhoto(file)) {
+    throw new Error("Photos must be a JPG, PNG, HEIC, or HEIF file.");
+  }
+
+  if (role === "tattoo" && !isPng(file)) {
+    throw new Error("Tattoo artwork must be a PNG file.");
   }
 
   if (!image.naturalWidth || !image.naturalHeight) {
-    throw new Error("That PNG could not be decoded.");
-  }
-
-  const pixelCount = image.naturalWidth * image.naturalHeight;
-  if (role === "photo" && pixelCount > MAX_PIXELS) {
-    throw new Error("That photo is over 20 megapixels. Choose a smaller PNG.");
+    throw new Error("That image could not be decoded.");
   }
 
   if (role === "tattoo" && !(await hasTransparency(image))) {
     throw new Error("Tattoo artwork needs a transparent background.");
   }
+}
+
+export function isHeic(file: File) {
+  return hasFileType(file, ["image/heic", "image/heif"], [".heic", ".heif"]);
+}
+
+function isSupportedPhoto(file: File) {
+  return hasFileType(
+    file,
+    ["image/jpeg", "image/png", "image/heic", "image/heif"],
+    [".jpg", ".jpeg", ".png", ".heic", ".heif"],
+  );
+}
+
+function isPng(file: File) {
+  return hasFileType(file, ["image/png"], [".png"]);
+}
+
+function hasFileType(file: File, mimeTypes: string[], extensions: string[]) {
+  const normalizedType = file.type.toLowerCase();
+  const normalizedName = file.name.toLowerCase();
+
+  return (
+    mimeTypes.includes(normalizedType) ||
+    extensions.some((extension) => normalizedName.endsWith(extension))
+  );
 }
 
 async function hasTransparency(image: HTMLImageElement): Promise<boolean> {

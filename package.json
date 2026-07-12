@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/m7tapia/trytat#readme",
   "dependencies": {
+    "heic2any": "^0.0.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },

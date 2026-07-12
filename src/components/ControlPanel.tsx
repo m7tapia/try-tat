@@ -34,17 +34,14 @@ export function ControlPanel({
   return (
     <aside className="control-panel">
       <div className="panel-heading">
-        <span>01</span>
-        <div>
-          <p>Build your preview</p>
-          <h2>Studio controls</h2>
-        </div>
+        <h2>Upload your images</h2>
       </div>
 
       <UploadField
         number="1"
         label="Placement photo"
-        hint="PNG · up to 20 megapixels"
+        hint="JPG, PNG or HEIC"
+        accept="image/jpeg,image/png,image/heic,image/heif,.jpg,.jpeg,.png,.heic,.heif"
         id="photo-upload"
         inputRef={photoInputRef}
         filename={photo?.file.name}
@@ -54,12 +51,17 @@ export function ControlPanel({
       <UploadField
         number="2"
         label="Tattoo artwork"
-        hint="Transparent PNG required"
+        hint="Transparent PNG"
+        accept="image/png,.png"
         id="tattoo-upload"
         inputRef={tattooInputRef}
         filename={tattoo?.file.name}
         onChange={(event) => onChooseAsset(event, "tattoo")}
       />
+
+      <p className="upload-tip">
+        Need a transparent tattoo file? Try an online transparent PNG converter.
+      </p>
 
       {error && (
         <p className="error" role="alert">{error}</p>
@@ -70,8 +72,8 @@ export function ControlPanel({
         <RangeControl
           label="Scale"
           value={transform.scale}
-          min={10}
-          max={300}
+          min={0}
+          max={100}
           suffix="%"
           onChange={(scale) => onTransformChange({ scale })}
         />
@@ -84,7 +86,7 @@ export function ControlPanel({
           onChange={(rotation) => onTransformChange({ rotation })}
         />
         <RangeControl
-          label="Opacity"
+          label="Transparency"
           value={transform.opacity}
           min={10}
           max={100}
@@ -104,7 +106,7 @@ export function ControlPanel({
         </button>
         <p>
           <strong>Ready to keep it?</strong>
-          Use your device’s screenshot shortcut to capture the canvas.
+          Screenshot to save.
         </p>
       </div>
     </aside>
