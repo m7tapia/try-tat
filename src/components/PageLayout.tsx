@@ -17,7 +17,7 @@ export function PageLayout({ children }: PropsWithChildren) {
         <h1>Tattoos are a <em>big commitment.</em> Try it first.</h1>
         <p>
           Layer a transparent tattoo design over your own photo. Adjust it until
-          the placement feels right, then download your preview.
+          the placement feels right, then download your image.
         </p>
       </section>
 
