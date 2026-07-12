@@ -50,7 +50,7 @@ export function EditorCanvas({
               className="photo-trigger"
               type="button"
               onClick={() => setShowFullPreview(true)}
-              aria-label="Open the complete photo for a screenshot"
+              aria-label="Open the complete photo preview"
             >
               <img
                 ref={photoRef}
@@ -88,7 +88,7 @@ export function EditorCanvas({
               type="button"
               onClick={() => setShowFullPreview(true)}
             >
-              View full photo
+              View preview
             </button>
           )}
         </div>

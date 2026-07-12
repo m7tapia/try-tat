@@ -224,6 +224,11 @@ input {
   padding-bottom: 18px;
 }
 
+.full-preview-actions {
+  display: flex;
+  gap: 10px;
+}
+
 .full-preview-header div {
   display: grid;
   gap: 3px;
@@ -250,6 +255,17 @@ input {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.full-preview-header .download-button {
+  border-color: #f8f3e9;
+  color: #211d19;
+  background: #f8f3e9;
+}
+
+.full-preview-header button:disabled {
+  cursor: wait;
+  opacity: 0.65;
 }
 
 .full-preview-composition {
@@ -720,13 +736,17 @@ footer {
     padding-bottom: 10px;
   }
 
+  .full-preview-actions {
+    gap: 6px;
+  }
+
   .full-preview-header strong {
     font-size: 18px;
   }
 
   .full-preview-header button {
     min-height: 42px;
-    padding: 10px 15px;
+    padding: 10px 11px;
   }
 
   .full-preview-hint {

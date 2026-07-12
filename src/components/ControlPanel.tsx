@@ -69,7 +69,7 @@ export function ControlPanel({
         <div className="save-note">
           <p>
             <strong>Ready to keep it?</strong>
-            Screenshot to save.
+            Open the preview to download.
           </p>
         </div>
       </div>

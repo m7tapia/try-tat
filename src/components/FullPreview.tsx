@@ -1,4 +1,5 @@
-import { useEffect, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
+import { downloadComposition } from "../download-composition";
 import { getRenderedScale } from "../transform";
 import type { ImageAsset, TattooTransform } from "../types";
 
@@ -15,6 +16,7 @@ export function FullPreview({
   transform,
   onClose,
 }: FullPreviewProps) {
+  const [downloadState, setDownloadState] = useState<"idle" | "saving" | "error">("idle");
   useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
@@ -49,6 +51,17 @@ export function FullPreview({
     width: `min(calc(100vw - var(--preview-gutter)), calc((100vh - var(--preview-vertical-space)) * ${aspectRatio}))`,
   };
 
+  async function handleDownload() {
+    setDownloadState("saving");
+
+    try {
+      await downloadComposition(photo, tattoo, transform);
+      setDownloadState("idle");
+    } catch {
+      setDownloadState("error");
+    }
+  }
+
   return (
     <div
       className="full-preview"
@@ -62,11 +75,21 @@ export function FullPreview({
       <div className="full-preview-header">
         <div>
           <strong>Full photo preview</strong>
-          <span>Screenshot to save</span>
+          <span>Download your preview</span>
         </div>
-        <button type="button" onClick={onClose} autoFocus>
-          Close
-        </button>
+        <div className="full-preview-actions">
+          <button
+            type="button"
+            className="download-button"
+            onClick={() => void handleDownload()}
+            disabled={downloadState === "saving"}
+          >
+            {downloadState === "saving" ? "Preparing…" : "Download JPEG"}
+          </button>
+          <button type="button" onClick={onClose} autoFocus>
+            Close
+          </button>
+        </div>
       </div>
 
       <div className="full-preview-composition" style={compositionStyle}>
@@ -94,8 +117,10 @@ export function FullPreview({
         )}
       </div>
 
-      <p className="full-preview-hint">
-        Press Escape, click outside the photo, or use Close to return.
+      <p className="full-preview-hint" aria-live="polite">
+        {downloadState === "error"
+          ? "The download could not be created. Try again."
+          : "Your JPEG includes the photo and tattoo only."}
       </p>
     </div>
   );
