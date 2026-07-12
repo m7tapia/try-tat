@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { DEFAULT_TRANSFORM } from "../constants";
 import { loadImageAsset } from "../image-assets";
 import type { ImageAsset, ImageRole, Position, TattooTransform } from "../types";
+import { isHeic } from "../validation";
 import { usePhotoRect } from "./usePhotoRect";
 
 export function useEditor() {
@@ -10,6 +11,7 @@ export function useEditor() {
   const [transform, setTransform] = useState<TattooTransform>(DEFAULT_TRANSFORM);
   const [error, setError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
+  const [isConvertingPhoto, setIsConvertingPhoto] = useState(false);
 
   const workspaceRef = useRef<HTMLDivElement>(null);
   const photoRef = useRef<HTMLImageElement>(null);
@@ -22,6 +24,8 @@ export function useEditor() {
 
   async function applyAsset(file: File, role: ImageRole) {
     setError(null);
+    const isConvertingHeic = role === "photo" && isHeic(file);
+    if (isConvertingHeic) setIsConvertingPhoto(true);
 
     try {
       const nextAsset = await loadImageAsset(file, role);
@@ -43,6 +47,8 @@ export function useEditor() {
           : "That image could not be loaded.",
       );
       return false;
+    } finally {
+      if (isConvertingHeic) setIsConvertingPhoto(false);
     }
   }
 
@@ -112,6 +118,7 @@ export function useEditor() {
     photoInputRef,
     tattooInputRef,
     ready: Boolean(photo && tattoo),
+    isConvertingPhoto,
     applyAsset,
     chooseAsset,
     updateTransform,

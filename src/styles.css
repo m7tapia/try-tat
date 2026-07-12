@@ -370,6 +370,30 @@ input {
   background: #24201c;
 }
 
+.file-button.is-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: wait;
+  pointer-events: none;
+}
+
+.file-button.is-loading::before {
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  content: "";
+  animation: loading-spin 0.75s linear infinite;
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .file-button:focus-within,
 input:focus-visible,
 button:focus-visible {

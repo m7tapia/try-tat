@@ -6,6 +6,7 @@ import { UploadField } from "./UploadField";
 type ControlPanelProps = {
   photo: ImageAsset | null;
   tattoo: ImageAsset | null;
+  isConvertingPhoto: boolean;
   transform: TattooTransform;
   error: string | null;
   ready: boolean;
@@ -21,6 +22,7 @@ type ControlPanelProps = {
 export function ControlPanel({
   photo,
   tattoo,
+  isConvertingPhoto,
   transform,
   error,
   ready,
@@ -44,6 +46,7 @@ export function ControlPanel({
           id="photo-upload"
           inputRef={photoInputRef}
           filename={photo?.file.name}
+          isLoading={isConvertingPhoto}
           onChange={(event) => onChooseAsset(event, "photo")}
         />
 
@@ -55,6 +58,7 @@ export function ControlPanel({
           id="tattoo-upload"
           inputRef={tattooInputRef}
           filename={tattoo?.file.name}
+          isLoading={false}
           onChange={(event) => onChooseAsset(event, "tattoo")}
         />
 

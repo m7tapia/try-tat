@@ -28,6 +28,7 @@ export function App() {
         <ControlPanel
           photo={editor.photo}
           tattoo={editor.tattoo}
+          isConvertingPhoto={editor.isConvertingPhoto}
           transform={editor.transform}
           error={editor.error}
           ready={editor.ready}
