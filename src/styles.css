@@ -439,10 +439,14 @@ input[type="range"] {
 
 .upload-actions {
   display: grid;
-  grid-template-columns: 125px 1fr;
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: 18px;
   padding-top: 18px;
+}
+
+.upload-actions .reset {
+  min-width: 125px;
 }
 
 .upload-actions p {

@@ -69,6 +69,10 @@ export function ControlPanel({
         )}
 
         <div className="upload-actions">
+          <p>
+            <strong>Ready to keep it?</strong>
+            Screenshot to save.
+          </p>
           <button
             className="reset"
             type="button"
@@ -77,10 +81,6 @@ export function ControlPanel({
           >
             Reset files
           </button>
-          <p>
-            <strong>Ready to keep it?</strong>
-            Screenshot to save.
-          </p>
         </div>
       </div>
 
