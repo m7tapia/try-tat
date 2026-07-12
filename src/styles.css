@@ -422,10 +422,7 @@ input[type="range"] {
 }
 
 .actions {
-  display: grid;
-  grid-template-columns: 125px 1fr;
-  align-items: center;
-  gap: 18px;
+  display: block;
   padding-top: 22px;
 }
 
@@ -443,6 +440,11 @@ input[type="range"] {
 .reset:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+.upload-reset {
+  min-width: 125px;
+  margin-top: 16px;
 }
 
 .actions p {
@@ -684,8 +686,7 @@ footer {
   }
 
   .actions {
-    grid-template-columns: 125px 1fr;
-    gap: 16px;
+    display: block;
   }
 
   .reset {
